@@ -1,0 +1,5 @@
+<div class="container">
+  <button class="btn" *ngIf="canScroll" (click)="loadPrevWeek()">Load Previous Week</button>
+  <button class="btn pull-right" *ngIf="canScroll" (click)="loadNextWeek()">Load Next Week</button>
+  <app-week></app-week>
+</div>
