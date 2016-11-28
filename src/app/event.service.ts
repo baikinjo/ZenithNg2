@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class EventService {
-  private BASE_URL = "http://localhost:5000/api/eventsapi";
+  private BASE_URL = "http://http://zencore.azurewebsites.net/api/eventsapi";
 
   constructor(private http: Http) { }
 

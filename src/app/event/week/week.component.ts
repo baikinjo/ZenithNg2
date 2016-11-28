@@ -30,10 +30,6 @@ export class WeekComponent implements OnInit {
   }
 
   getAllEvents(): void {
-    // this.eventService.getAll().subscribe(
-    //       data => { this.results = data; },
-    //       error => console.log(error)
-    //       );
     this.results = [];
     this.eventService.getAll()
       .then(data => this.parseEvents(data));  
@@ -42,18 +38,10 @@ export class WeekComponent implements OnInit {
   parseEvents(eventList){
     var typedlist: [Event] = eventList;
 
-    console.log("in child");
-    console.log(this.currentDate);
-
     var curr = this.currentDate;
     curr.setHours(0,0,0,0);
     var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay() + (curr.getDay() == 0 ?  -6 : 1)));
     var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 8));
-
-    console.log(firstday);
-    console.log(lastday);
-    // console.log(lastday > firstday);
-    // console.log(lastday < firstday);
 
     for (let event of typedlist){
 

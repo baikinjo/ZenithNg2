@@ -19,7 +19,7 @@ export class LoginComponent {
   onSubmit(username, password) {
     this.authService.login(username, password).subscribe((result) => {
       if (result) {
-        this.router.navigate(['event']);
+        console.log(result);
       }
     });
   }

@@ -12,6 +12,7 @@ import {AuthenticationService} from '../authentication.service'
 })
 export class EventComponent implements OnInit {
   loggedIn = false;
+  canScroll = false;
   currentDate: Date = new Date();
   dayDifference = 0;
 
@@ -21,8 +22,9 @@ export class EventComponent implements OnInit {
   constructor(private eventService: EventService, private user: AuthenticationService) { }
 
   ngOnInit() {
-    this.loggedIn = this.user.isLoggedIn();
-    console.log(this.currentDate);
+    // this.loggedIn = this.user.isLoggedIn();
+    this.canScroll = this.user.canScrollWeek();
+    console.log("can scroll: " + this.canScroll);
   }
 
   loadPrevWeek(){
@@ -34,7 +36,6 @@ export class EventComponent implements OnInit {
     console.log('current date: ' + this.currentDate);
     this.viewChildren.toArray().forEach((child) => child.parentSet = true);
     this.viewChildren.toArray().forEach((child) => child.setTime(this.currentDate));
-    // this.viewChildren.toArray().forEach((child) => child.previous());
     this.viewChildren.toArray().forEach((child) => child.getAllEvents());
     
   }
@@ -48,8 +49,6 @@ export class EventComponent implements OnInit {
     console.log('current date: ' + this.currentDate);
     this.viewChildren.toArray().forEach((child) => child.parentSet = true);
     this.viewChildren.toArray().forEach((child) => child.setTime(this.currentDate));
-
-    // this.viewChildren.toArray().forEach((child) => child.next());
     this.viewChildren.toArray().forEach((child) => child.getAllEvents());
   }
 }
