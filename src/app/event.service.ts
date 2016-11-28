@@ -5,14 +5,9 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class EventService {
-  private BASE_URL = "http://http://zencore.azurewebsites.net/api/eventsapi";
+  private BASE_URL = "http://zencore.azurewebsites.net/api/eventsapi";
 
   constructor(private http: Http) { }
-
-  // getAll() {
-  //   return this.http.get('http://localhost:52377/api/eventsapi')
-  //   .map((res: Response) => res.json());
-  // }
 
   getAll() {
     let headers = new Headers();
@@ -25,9 +20,6 @@ export class EventService {
       .toPromise()
       .then(response => response.json() as Event[])
       .catch(this.handleError);
-
-     // return this.http.get(this.BASE_URL, {headers})
-     //  .map((res: Response) => res.json());
   }
 
   private handleError(error: any): Promise<any> {

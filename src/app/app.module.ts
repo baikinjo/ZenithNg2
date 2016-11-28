@@ -27,6 +27,7 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+      { path: '', component: EventComponent },
       { path: 'login', component: LoginComponent },
       { path: 'event', component: EventComponent },
       { path: 'logout', component: LogoutComponent }

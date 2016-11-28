@@ -6,7 +6,7 @@ import {Activity} from './activity';
 
 @Injectable()
 export class ActivityService {
-  private BASE_URL = "http://http://zencore.azurewebsites.net/api/activitiesapi";
+  private BASE_URL = "http://localhost:5000/api/activitiesapi";
 
   constructor(private http: Http) { }
 

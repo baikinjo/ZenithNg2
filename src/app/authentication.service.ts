@@ -18,7 +18,7 @@ export class AuthenticationService {
     let creds: string = 'username='+username+'&password='+password+'&grant_type=password';
     return this.http
       .post(
-        'http://http://zencore.azurewebsites.net/connect/token', 
+        'http://zencore.azurewebsites.net/connect/token',
         creds,
         { headers }
       )
@@ -36,12 +36,12 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('can_scroll');
     this.loggedIn = false;
-    this.canScroll = false;
   }
 
   determineRole(){
-    let permissionsURL = "http://http://zencore.azurewebsites.net/api/eventsapi/getpermission"
+    let permissionsURL = "http://zencore.azurewebsites.net/api/eventsapi/getpermission"
     let headers = new Headers();
     headers.append('Accept', 'application/json');
     let authToken = localStorage.getItem('auth_token');
@@ -50,8 +50,8 @@ export class AuthenticationService {
     return this.http.get(permissionsURL, {headers})
       .map(res => res.json())
       .subscribe(
-        data => {this.canScroll = true; this.router.navigate(['event']);},
-        err => {this.canScroll = false; this.router.navigate(['event']);},
+        data => {localStorage.setItem('can_scroll', 'true'); this.router.navigate(['event']);},
+        err => {localStorage.setItem('can_scroll', 'false'); this.router.navigate(['event']);},
       );
   }
 

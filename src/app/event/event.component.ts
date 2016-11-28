@@ -11,19 +11,18 @@ import {AuthenticationService} from '../authentication.service'
     
 })
 export class EventComponent implements OnInit {
-  loggedIn = false;
-  canScroll = false;
+    canScroll: boolean;
   currentDate: Date = new Date();
   dayDifference = 0;
 
   @ViewChildren(WeekComponent)
     viewChildren: QueryList<WeekComponent>;
 
-  constructor(private eventService: EventService, private user: AuthenticationService) { }
+  constructor(private eventService: EventService, private user: AuthenticationService) {}
 
   ngOnInit() {
     // this.loggedIn = this.user.isLoggedIn();
-    this.canScroll = this.user.canScrollWeek();
+    this.canScroll = localStorage.getItem('can_scroll') === 'true';
     console.log("can scroll: " + this.canScroll);
   }
 

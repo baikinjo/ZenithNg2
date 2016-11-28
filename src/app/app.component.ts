@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, enableProdMode } from '@angular/core';
 import { EventService } from './event.service';
 import { EventComponent } from './event/event.component'
 import { AuthenticationService } from './authentication.service'
-import { ActivityService } from './activity.service'
-
+enableProdMode()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [EventService, ActivityService]
+  providers: [EventService]
 })
 export class AppComponent implements OnInit{
   constructor(private authService: AuthenticationService) {}
@@ -17,5 +16,6 @@ export class AppComponent implements OnInit{
   
   ngOnInit() {
     this.loggedIn = this.authService.isLoggedIn();
+
   }
 }
